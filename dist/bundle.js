@@ -12,16 +12,16 @@
 
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
 /******/ 		};
 
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
 /******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
+/******/ 		module.loaded = true;
 
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -34,47 +34,38 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 
-/******/ 	// identity function for calling harmory imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-
-/******/ 	// define getter function for harmory exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		Object.defineProperty(exports, name, {
-/******/ 			configurable: false,
-/******/ 			enumerable: true,
-/******/ 			get: getter
-/******/ 		});
-/******/ 	};
-
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "./dist";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports) {
 
-// document.write("看看如何让它工作！");
-// require("!style!css!./style.css") // 载入 style.css
-// require("./style.css") // 载入 style.css
-// require("./style.css")
-document.write('It works.')
-// document.write(require('./style.js'))
+	// @description 主入口模块
+	import React from 'react'
+	import { render } from 'react-dom'
+
+	// 引入React-Route模块
+	import { Router, Route, Link, hashHistory, IndexRoute, Redirect, IndexLink } from 'react-router'
+
+	//引入Antd的导航组件
+	import { Menu, Icon, Switch } from 'antd'
+	const SubMenu = Menu.SubMenu
+
+	// 引入Ant-Design样式 & Animate.css
+	import 'animate.css/animate.min.css'
+	import 'font-awesome/css/font-awesome.min.css'
+
+	// 引入主体样式文件
+	import './main.css'
+
+	// 引入单个页面（包括嵌套的子页面）
+	import myTable from './components/table.js'
+	import myForm from './components/form.js'
 
 
 /***/ }
